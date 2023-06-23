@@ -1,12 +1,7 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import 'bootstrap/dist/css/bootstrap.min.css';
-	
-	import OverviewPopup from './OverviewPopup.svelte';
-	import WhyRecruitlyPopup from './WhyRecruitlyPopup.svelte';
-	import PricingPopup from './PricingPopup.svelte';
-	import AutomationPopup from './AutomationPopup.svelte';
-	
+  
 	const dispatch = createEventDispatcher();
 	let activePopup = null;
 	let featureIndex = 0;
@@ -54,19 +49,109 @@
   </div>
   
   {#if activePopup === 'whyRecruitly'}
-	<WhyRecruitlyPopup on:closePopup={closePopup} />
+	<div class="popup" on:click={closePopup}>
+	  <div class="popup-content">
+		<button class="close-button" on:click={closePopup}>&times;</button>
+		<div class="popup-section">
+		  <h3>Email Marketing</h3>
+		  <p class="custom-paragraph">Engage talent at the right time, promote your business to the right audience.</p>
+		</div>
+		<div class="popup-section">
+		  <h3>Applicant Tracking System</h3>
+		  <p class="custom-paragraph">Candidate sharing, boolean searches, interview scheduling, automation and more.</p>
+		</div>
+		<div class="popup-section">
+		  <h3>Website Integration</h3>
+		  <p class="custom-paragraph">Turn your WordPress website into a fully featured job-board using our FREE plugins.</p>
+		</div>
+		<div class="popup-section">
+		  <h3>Job Distribution</h3>
+		  <p class="custom-paragraph">Get your job in front of millions of candidates, manage applicants in one place.</p>
+		</div>
+		<div class="popup-section">
+		  <h3>Search & Import</h3>
+		  <p class="custom-paragraph">Search and import candidates from CV-Library and TotalJobs with just a few clicks.</p>
+		</div>
+		<div class="popup-section">
+		  <h3>Recruiting Automation</h3>
+		  <p class="custom-paragraph">Boost your team's productivity by creating workflows that automate repetitive and common tasks.</p>
+		</div>
+	  </div>
+	</div>
   {/if}
   
   {#if activePopup === 'pricing'}
-	<PricingPopup on:closePopup={closePopup} />
+	<div class="popup pricing-popup">
+	  <div class="popup-content">
+		<button class="close-button" on:click={closePopup}>&times;</button>
+		<div class="popup-section">
+		  <h3>Recruitly Pricing</h3>
+		  <div class="pricing-tier">
+			<h4>Solo</h4>
+			<p class="custom-paragraph">For independent recruiters</p>
+			<p class="custom-paragraph pricing-details">
+			  $35/user/month
+			</p>
+		  </div>
+		  <div class="pricing-tier">
+			<h4>Startup</h4>
+			<p class="custom-paragraph">For startup agencies</p>
+			<p class="custom-paragraph pricing-details">
+			  $50/user/month
+			</p>
+		  </div>
+		  <div class="pricing-tier">
+			<h4>Professional</h4>
+			<p class="custom-paragraph">For established teams</p>
+			<p class="custom-paragraph pricing-details">
+			  $75/user/month
+			</p>
+		  </div>
+		  <div class="pricing-tier">
+			<h4>Enterprise</h4>
+			<p class="custom-paragraph">For large organizations</p>
+			<p class="custom-paragraph pricing-details">
+			  $100/user/month
+			</p>
+		  </div>
+		</div>
+	  </div>
+	</div>
   {/if}
   
   {#if activePopup === 'overview'}
-	<OverviewPopup on:closePopup={closePopup} />
+	<div class="popup" on:click={closePopup}>
+	  <div class="popup-content">
+		<button class="close-button" on:click={closePopup}>&times;</button>
+		<div class="popup-video-section">
+		  <iframe class="popup-video" src="https://www.youtube.com/embed/9L0fVJb7zSk" frameborder="0" allowfullscreen></iframe>
+		</div>
+	  </div>
+	</div>
   {/if}
   
   {#if activePopup === 'automation'}
-	<AutomationPopup on:closePopup={closePopup} />
+	<div class="popup automation-popup" on:click={closePopup}>
+	  <div class="popup-content">
+		<button class="close-button" on:click={closePopup}>&times;</button>
+		<div class="popup-section">
+		  <h3>Recruiting Automation</h3>
+		  <p class="custom-paragraph">Increase efficiency by creating workflows that automate repetitive and common tasks, save hours each day.</p>
+		</div>
+		<div class="popup-section">
+		  <h3>Save time</h3>
+		  <p class="custom-paragraph">Increase efficiency by creating workflows that automate repetitive and common tasks, save hours each week.</p>
+		</div>
+		<div class="popup-section">
+		  <h3>Be in control</h3>
+		  <p class="custom-paragraph">Ensure that recruiting standards are enforced automatically, and build a streamlined and error-proof workflow.</p>
+		</div>
+		<div class="popup-section">
+		  <h3>Automate everything</h3>
+		  <p class="custom-paragraph">Automate mundane tasks so your team can focus on delivering a smooth experience at every step of the recruiting cycle.</p>
+		</div>
+	  </div>
+	</div>
   {/if}
   
   <style>
