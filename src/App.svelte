@@ -24,7 +24,76 @@
 	}
   
 	setInterval(nextFeature, 2000);
-  </script>
+
+	function openAutomationWindow() {
+      window.location.href = 'automation.html';
+    
+    // Wait for the new window to load
+    automationWindow.addEventListener('load', () => {
+      // Access the document object of the new window
+      const automationDocument = automationWindow.document;
+      
+      // Set the content of the new window
+      automationDocument.open();
+      automationDocument.write(`
+        <html>
+          <head>
+            <title>Recruiting Automation</title>
+            <style>
+              /* Add custom styles for the new window here */
+              body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                font-family: Arial, sans-serif;
+              }
+              
+              h3 {
+                color: blue;
+                font-size: 24px;
+                margin-bottom: 10px;
+              }
+              
+              p {
+                font-size: 18px;
+                margin-bottom: 10px;
+                text-align: center;
+              }
+              
+              
+              img {
+                max-width: 100%;
+              }
+            </style>
+          </head>
+          <body>
+            <h3>Recruiting Automation</h3>
+            <p>Increase efficiency by creating workflows that automate repetitive and common tasks, saving hours each day.</p>
+			<img src="https://recruitly.io/wp-content/uploads/2021/08/automation-header.svg" alt="Image Description">
+          </body>
+        </html>
+      `);
+      automationDocument.close();
+    });
+  }
+
+  
+  function openPricingWindow() {
+    window.location.href = 'pricing.html';
+  }
+
+
+
+</script>
+
+<div class="information">
+  <p on:click={openPopup('whyRecruitly')} style="color: blue;">Why Recruitly</p>
+  <p on:click={openAutomationWindow} style="color: blue; cursor: pointer;">Automation</p>
+  <p on:click={openPricingWindow} style="color: blue; cursor: pointer;">Pricing</p>
+</div>
   
   <main>
 	<div class="container">
@@ -44,8 +113,8 @@
   
   <div class="information">
 	<p on:click={() => openPopup('whyRecruitly')} style="color: blue;">Why Recruitly</p>
-	<p on:click={() => openPopup('automation')} style="color: blue;">Automation</p>
-	<p on:click={() => openPopup('pricing')} style="color: blue;">Pricing</p>
+	<p on:click={openAutomationWindow} style="color: blue; cursor: pointer;">Automation</p>
+	<p on:click={openPricingWindow} style="color: blue; cursor: pointer;">Pricing</p>
   </div>
   
   {#if activePopup === 'whyRecruitly'}
@@ -241,6 +310,7 @@
 	body {
 	  background-color: #e2f3fc;
 	}
+	
 	.close-button {
 	  position: absolute;
 	  top: 0px;
@@ -274,4 +344,3 @@
 	  height: 400px;
 	}  
   </style>
-  
